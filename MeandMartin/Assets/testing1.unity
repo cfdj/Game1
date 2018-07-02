@@ -326,6 +326,8 @@ MonoBehaviour:
   moveSpeed: 3
   sprintSpeed: 0
   turnSpeed: 5
+  dashLength: 0.5
+  dashSpeed: 10
 --- !u!23 &1332610103
 MeshRenderer:
   m_ObjectHideFlags: 0
