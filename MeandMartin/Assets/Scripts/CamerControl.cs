@@ -11,7 +11,7 @@ public class CamerControl : MonoBehaviour {
 	public Transform camTransform;
 	private Camera cam;
 
-	private float distance = 10.0f;
+	private float distance = 5.0f;
 	private float currentX = 0.0f;
 	private float currentY = 0.0f;
 	private float sensivityX = 4.0f;

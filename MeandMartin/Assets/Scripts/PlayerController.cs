@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour {
 	private float dashEnd;
 	public float dashLength;
 	public float dashSpeed;
+
+	//camera stuff
+	private float currentX = 0.0f;
+	private float currentY = 0.0f; //Shouldn't change
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
@@ -36,7 +41,8 @@ public class PlayerController : MonoBehaviour {
 				sprintSpeed = 1.0f;
 			}
 		}
-
+		//using the camera to turn the player
+		currentX += Input.GetAxis ("Mouse X");
 
 	}
 	
@@ -50,8 +56,11 @@ public class PlayerController : MonoBehaviour {
 			currentTurnSpeed = turnSpeed;
 
 		}
-		rb.transform.Rotate (0, zaxis * currentTurnSpeed, 0);
+		//rb.transform.Rotate (0, zaxis * currentTurnSpeed, 0);
 		//rb.rotation = Quaternion.Euler (rb.rotation.x,rb.rotation.y + (zaxis * turnSpeed), rb.rotation.z);
-		rb.velocity = transform.forward * xaxis * moveSpeed * sprintSpeed; //this's location here does mean the player can change direction during their dash
+		rb.velocity = (transform.forward * xaxis * moveSpeed * sprintSpeed) + (transform.right*zaxis*moveSpeed); //this's location here does mean the player can change direction during their dash
+		//Turning
+		Quaternion rotation = Quaternion.Euler (currentY, currentX, 0);
+		transform.localRotation = rotation;
 	}
 }
