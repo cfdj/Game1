@@ -20,9 +20,15 @@ public class PlayerController : MonoBehaviour {
 	private float currentX = 0.0f;
 	private float currentY = 0.0f; //Shouldn't change
 
+	// Animation
+	Animator playerAnimator;
+	private bool SpearStab;
+	private bool SpearSlash;
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
+		playerAnimator = GetComponent<Animator> ();
 		sprintingMul = 3.0f;
 		sprintSpeed = 1.0f;
 	}
@@ -43,6 +49,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		//using the camera to turn the player
 		currentX += Input.GetAxis ("Mouse X");
+
+		//Attack code
+		playerAnimator.SetBool("SpearSlash",Input.GetButton("Fire1"));
+		playerAnimator.SetBool ("SpearStab", Input.GetButton("Fire2"));
 
 	}
 	
