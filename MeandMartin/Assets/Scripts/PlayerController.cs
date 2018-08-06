@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	private float dashEnd;
 	public float dashLength;
 	public float dashSpeed;
-
+	public int health;
 	//camera stuff
 	private float currentX = 0.0f;
 	private float currentY = 0.0f; //Shouldn't change
@@ -72,5 +72,12 @@ public class PlayerController : MonoBehaviour {
 		//Turning
 		Quaternion rotation = Quaternion.Euler (currentY, currentX, 0);
 		transform.localRotation = rotation;
+	}
+
+	public void Hit(int damage){
+		health -= damage;
+		if (health <= 0) {
+			Destroy (gameObject);
+		}
 	}
 }
