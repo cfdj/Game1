@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour {
 	Animator playerAnimator;
 	private bool SpearStab;
 	private bool SpearSlash;
-
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
@@ -52,7 +51,8 @@ public class PlayerController : MonoBehaviour {
 
 		//Attack code
 		playerAnimator.SetBool("SpearSlash",Input.GetButton("Fire1"));
-		playerAnimator.SetBool ("SpearStab", Input.GetButton("Fire2"));
+		bool Stabbing = Input.GetButton ("Fire2");
+		playerAnimator.SetBool ("SpearStab", Stabbing);
 
 	}
 	
